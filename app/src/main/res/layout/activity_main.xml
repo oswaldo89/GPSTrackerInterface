@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:gravity="top"
+    android:orientation="vertical"
+    tools:context="com.oswaldogh89.gpstracker.MainActivity">
+
+    <Button
+        android:id="@+id/startBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="startGpsTracker"
+        android:text="Iniciar GPS Automatico" />
+
+    <Button
+        android:id="@+id/stopBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="stopGpsTracker"
+        android:text="Detener GPS Automatico"
+        android:visibility="gone" />
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/getLocationBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="getLocation"
+        android:text="Forzar obtencion de coordenadas" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="clearLog"
+        android:text="Limpiar Log" />
+
+    <TextView
+        android:id="@+id/txtLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Location..."
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
