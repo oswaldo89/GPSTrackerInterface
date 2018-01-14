@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements GPSListener {
 
     String locationUpdated = "";
     TextView txtLocation;
-    GPSTracker tracker;
+    HandlerLocation tracker;
     Button startBtn, stopBtn, getLocationBtn;
 
     @Override
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements GPSListener {
     }
 
     public void startGpsTracker(View v) {
-        tracker = new GPSTracker(this, this);
+        tracker = new HandlerLocation(this, this);
         startBtn.setVisibility(View.GONE);
         stopBtn.setVisibility(View.VISIBLE);
         getLocationBtn.setVisibility(View.VISIBLE);

@@ -14,18 +14,18 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 
-public class GPSTracker extends Service implements LocationListener {
+public class HandlerLocation extends Service implements LocationListener {
 
     private GPSListener interfaceListener;
     private final Context mContext;
     private Location location;
-    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 2;
-    private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1;
+    private static final long DISTANCIA_MINIMA_PARA_ACTUALIZAR = 2;
+    private static final long TIEMPO_MINIMO_ENTRE_ACTUALIZACION = 1000 * 60 * 1;
     protected LocationManager locationManager;
     private double latitude;
     private double longitude;
 
-    public GPSTracker(Context context, GPSListener interfaceListener) {
+    public HandlerLocation(Context context, GPSListener interfaceListener) {
         this.mContext = context;
         this.interfaceListener = interfaceListener;
         getLocation();
@@ -40,7 +40,7 @@ public class GPSTracker extends Service implements LocationListener {
             if (isGPSEnabled) {
                 if (location == null) {
                     if (locationManager != null) {
-                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,MIN_TIME_BW_UPDATES,MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, TIEMPO_MINIMO_ENTRE_ACTUALIZACION, DISTANCIA_MINIMA_PARA_ACTUALIZAR, this);
                         location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                     }
                 }
@@ -52,33 +52,23 @@ public class GPSTracker extends Service implements LocationListener {
 
     }
 
-    /**
-     * Function to get latitude
-     * */
     public double getLatitude(){
         if(location != null){
             latitude = location.getLatitude();
         }
-
-        // return latitude
         return latitude;
     }
 
-    /**
-     * Function to get longitude
-     * */
     public double getLongitude(){
         if(location != null){
             longitude = location.getLongitude();
         }
-
-        // return longitude
         return longitude;
     }
 
     public void stopUsingGPS(){
         if(locationManager != null){
-            locationManager.removeUpdates(GPSTracker.this);
+            locationManager.removeUpdates(HandlerLocation.this);
         }
     }
 
