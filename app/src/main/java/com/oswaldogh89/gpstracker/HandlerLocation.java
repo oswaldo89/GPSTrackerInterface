@@ -19,8 +19,8 @@ public class HandlerLocation extends Service implements LocationListener {
     private GPSListener interfaceListener;
     private final Context mContext;
     private Location location;
-    private static final long DISTANCIA_MINIMA_PARA_ACTUALIZAR = 2;
-    private static final long TIEMPO_MINIMO_ENTRE_ACTUALIZACION = 1000 * 60 * 1;
+    private static final long DISTANCIA_MINIMA_PARA_ACTUALIZAR = 1;
+    private static final long TIEMPO_MINIMO_ENTRE_ACTUALIZACION = 1000;
     protected LocationManager locationManager;
     private double latitude;
     private double longitude;
